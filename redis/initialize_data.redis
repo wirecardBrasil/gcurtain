@@ -1,0 +1,3 @@
+SET feature:send_pld_producer_queue:percentage 100
+SADD feature:send_pld_producer_queue:users "MPA-112233"
+SAVE
