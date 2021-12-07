@@ -45,7 +45,7 @@ g.IsOpen('feature', ['user-1','user-2'])
 ```
 
 ## How to start unit testing
-1. Upload redis image
+1. Start redis server with docker-compose up on the root folder
 2. Run the GCurtain_test file (go test)
 
 
