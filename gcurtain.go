@@ -14,7 +14,12 @@ type GCurtain struct {
 }
 
 func (g *GCurtain) Init(uri string) {
-	uriParsed, _ := redis.ParseURL(uri)
+	uriParsed, err := redis.ParseURL(uri)
+
+	if err != nil {
+		panic(err)
+	}
+
 	g.redisClient = redis.NewClient(uriParsed)
 }
 
