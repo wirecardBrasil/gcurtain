@@ -14,9 +14,8 @@ type GCurtain struct {
 }
 
 func (g *GCurtain) Init(uri string) {
-	g.redisClient = redis.NewClient(&redis.Options{
-		Addr: uri,
-	})
+	uriParsed, _ := redis.ParseURL(uri)
+	g.redisClient = redis.NewClient(uriParsed)
 }
 
 func (g *GCurtain) IsOpen(feature string, users ...string) bool {
