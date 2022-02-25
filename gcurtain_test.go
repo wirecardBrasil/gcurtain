@@ -5,12 +5,15 @@ import (
 	"testing"
 )
 
-const uri = "localhost:6379"
+const uri = "redis://localhost:6379"
 
 var g = new(GCurtain)
 
 func TestFeatureInvalidForUser(t *testing.T) {
-	g.Init(uri)
+	erro := g.Init(uri)
+	if erro != nil {
+		t.Errorf("Não foi possível conectar-se ao redis da feature flag % v", erro)
+	}
 	returnReceived := g.IsOpen("send_pld_producer_queue", "TEST_INVALID")
 	if false != returnReceived {
 		t.Errorf("Type received is different from expected! expected %s and received %s",

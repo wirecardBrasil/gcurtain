@@ -13,7 +13,7 @@ type GCurtain struct {
 	redisClient *redis.Client
 }
 
-func (g *GCurtain) Init(uri string) {
+func (g *GCurtain) Init(uri string) error {
 	uriParsed, err := redis.ParseURL(uri)
 
 	if err != nil {
@@ -21,6 +21,10 @@ func (g *GCurtain) Init(uri string) {
 	}
 
 	g.redisClient = redis.NewClient(uriParsed)
+	_, erro := g.redisClient.Ping().Result()
+
+	return erro
+
 }
 
 func (g *GCurtain) IsOpen(feature string, users ...string) bool {
