@@ -12,7 +12,7 @@ var g = new(GCurtain)
 func TestFeatureInvalidForUser(t *testing.T) {
 	erro := g.Init(uri)
 	if erro != nil {
-		t.Errorf("Não foi possível conectar-se ao redis da feature flag % v", erro)
+		t.Errorf("Could not connect to GCurtain Redis % v", erro)
 	}
 	returnReceived := g.IsOpen("send_pld_producer_queue", "TEST_INVALID")
 	if false != returnReceived {
